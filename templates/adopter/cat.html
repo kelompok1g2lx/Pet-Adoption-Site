@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.js"
+        integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <link href="{{ url_for('static', filename='mystyle.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="{{ url_for('static', filename='myjs.js') }}"></script>
+
+</head>
+
+<body>
+    <div id="header">
+        <div class="container">
+            <nav>
+                <img src="static/images/logo.png" class="logo">
+                <ul>
+                    <li><a href="/adopsi">ADOPT NOW</a></li>
+                    <li><a href="/status1">ADOPTION STATUS</a></li>
+                    <li><a href="/history1">HISTORY</a></li>
+                </ul>
+            </nav>
+            <a class="profile-button" href="/user/{{ user_info.username }}">
+                <span class="material-icons">perm_identity</span></a>
+        </div>
+    </div>
+
+    <div class="d-flex flex-wrap justify-content-center">
+        {% for pet in pets %}
+        <div class="card mb-3 container-fluid py-5 card" style="width: 18rem;">
+            <img src="{{ pet.image }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ pet.nh }}</h5>
+                <p class="card-text">{{ pet.keterangan }}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Gender: {{ pet.gender }}</li>
+                <li class="list-group-item">Age: {{ pet.usia }}</li>
+                <li class="list-group-item">Species: {{ pet.spesies }}</li>
+                <li class="list-group-item">Owner: {{ pet.username }}</li>
+                <li class="list-group-item">Contact: {{ pet.kontak }}</li>
+                <li class="list-group-item">City: {{ pet.kota }}</li>
+            </ul>
+            <div class="card-body">
+                <a href="#" onclick="sendAdoptionRequest('{{ pet.id_pemilik }}', '{{ pet.username }}')"
+                    class="card-link btn btn-outline-success btn-sm fill">Adopt</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</body>
+
+</html> 
