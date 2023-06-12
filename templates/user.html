@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="icon" href="{{ url_for('static', filename='pumpkin.png') }}" type="image/x-icon" />
+  <title>Home | Sweeter</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <meta property="og:title" content="Sweeter - the sweetest site" />
+  <meta property="og:description" content="second twitter, less cancerous, discuss food only" />
+  <meta property="og:image"
+    content="https://cdn.glitch.global/9e85c24f-1377-407a-9e73-dae5bb7dcc9e/marius-ciocirlan-T9pdHqCsyoQ-unsplash.jpg?v=1684596646821" />
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+    crossorigin="anonymous"></script>
+  <link href="{{ url_for('static', filename='mystyle.css') }}" rel="stylesheet">
+  <!-- Bulma CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
+  <!-- Font Awesome CSS -->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+  <link href="{{ url_for('static', filename='mystyle.css') }}" rel="stylesheet">
+</head>
+
+  <!-- JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+  <script src="{{ url_for('static', filename='myjs.js') }}"></script>
+
+</head>
+
+<body>
+
+  <section class="hero is-white">
+    <div class="hero-body" style="padding-bottom:1rem;margin:auto;min-width: 400px">
+      <article class="media">
+        <figure class="media-left" style="align-self: center">
+          <a class="image is-96x96" href="#">
+            <img class="is-rounded" src="{{ url_for('static', filename=user_info.profile_pic_real) }}">
+          </a>
+        </figure>
+        <div class="media-content">
+          <div class="content">
+            <p>
+              <strong>{{ user_info.profile_name }}</strong> <small>@{{ user_info.username }}</small>
+              <br>
+              {{ user_info.profile_info }}
+            </p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+  {% if status %}
+  <nav id="btns-me" class="level is-mobile" style="margin-top: 2rem">
+    <a class="button level-item has-text-centered is-sparta" aria-label="edit"
+      onclick='$("#modal-edit").addClass("is-active")'>
+      Edit Profile&nbsp;&nbsp;&nbsp;<span class="icon is-small"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+    </a>
+    <div class="modal" id="modal-edit">
+      <div class="modal-background" onclick='$("#modal-edit").removeClass("is-active")'></div>
+      <div class="modal-content">
+        <div class="box">
+          <article class="media">
+            <div class="media-content">
+              <div class="field">
+                <label class="label" for="input-name">Name</label>
+                <p class="control">
+                  <input id="input-name" class="input" placeholder="Your name" value="{{ user_info.profile_name }}" />
+                </p>
+              </div>
+              <div class="field">
+                <label class="label" for="input-pic">Profile Picture</label>
+                <div class="control is-expanded">
+                  <div class="file has-name">
+                    <label class="file-label" style="width: 100%">
+                      <input id="input-pic" class="file-input" type="file" name="resume" />
+                      <span class="file-cta"><span class="file-icon"><i class="fa fa-upload"></i></span>
+                        <span class="file-label">Select a file</span>
+                      </span>
+                      <span id="file-name" class="file-name" style="width: 100%; max-width: 100%">{{
+                        user_info.profile_pic }}</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label" for="input-asal">Asal Kota</label>
+                <p class="control">
+                  <input id="input-asal" class="input" type="text" name="asal_give" placeholder="Your city"
+                    value="{{ user_info.profile_asal }}" />
+                </p>
+              </div>
+              <div class="field">
+                <label class="label" for="input-kontak">Contact Person</label>
+                <p class="control">
+                  <input id="input-kontak" class="input" type="text" name="kontak_give" placeholder="Your contact info"
+                    value="{{ user_info.profile_kontak }}" />
+                </p>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <nav class="level is-mobile">
+          <div class="level-left"></div>
+          <div class="level-right">
+            <div class="level-item">
+              <a class="button is-sparta" onclick="update_profile()">Update</a>
+            </div>
+            <div class="level-item">
+              <a class="button is-sparta is-outlined" onclick='$("#modal-edit").removeClass("is-active")'>Cancel</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+      </article>
+    </div>
+    </div>
+    </div>
+    <a class="button level-item has-text-centered is-sparta is-outlined" aria-label="logout" href="/mypets">
+      Uploader Mode&nbsp;&nbsp;&nbsp;
+    </a>
+    <a class="button level-item has-text-centered is-sparta is-outlined" aria-label="logout" href="/adopsi">
+      Adopter Mode&nbsp;&nbsp;&nbsp;
+    </a>
+    <a class="button level-item has-text-centered is-sparta is-outlined" aria-label="logout" onclick="sign_out()">
+      Sign Out&nbsp;&nbsp;&nbsp;<span class="icon is-small"><i class="fa fa-sign-out" aria-hidden="true"></i></span>
+    </a>
+  </nav>
+  {% endif %}
+
+
+ 
+
+</body>
+
+</html>
