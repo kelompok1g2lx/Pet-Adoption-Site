@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Home | Page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.js"
+        integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <link href="{{ url_for('static', filename='mystyle.css') }}" rel="stylesheet">
+    <script src="{{ url_for('static', filename='myjs.js') }}"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <div id="header">
+        <div class="container">
+            <nav>
+                <img src="static/images/logo.png" class="logo">
+                <ul>
+                    <li><a href="/adopsi">ADOPT NOW</a></li>
+                    <li><a href="/status1">ADOPTION STATUS</a></li>
+                    <li><a href="/history1">HISTORY</a></li>
+                </ul>
+            </nav>
+            <a class="profile-button" href="/user/{{ user_info.username }}">
+                <span class="material-icons">perm_identity</span></a>    
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="p-5 mb-4 bg-body-tertiary rounded-3 card-container">
+            <div class="container-fluid py-5 card">
+                <img src="https://i.pinimg.com/564x/b3/95/8b/b3958b3d50614dae2ea461714991e3f5.jpg" class="card-img-top"
+                    alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Cats & Kittens</h5>
+                    <p class="card-text">
+                    <p style="margin-bottom: 0.1em;">Whiskers softly touch,</p>
+                    <p style="margin-bottom: 0.1em;">Silent paws dance on moonbeams,</p>
+                    <p style="margin-bottom: 0;">Mysterious grace.</p>
+                    </p>
+                    <a href="/cat" class="btn btn-outline-success">View Cats</a>
+                </div>
+            </div>
+
+            <div class="container-fluid py-5 card">
+                <img src="https://i.pinimg.com/564x/76/ab/1b/76ab1b09b4855e42d6a88ab3e791c22e.jpg" class="card-img-top"
+                    alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Dogs & Puppies</h5>
+                    <p class="card-text">
+                    <p style="margin-bottom: 0.1em;">Loyal hearts that wag,</p>
+                    <p style="margin-bottom: 0.1em;">Bounding joy in every step,</p>
+                    <p style="margin-bottom: 0;">Unconditional love.</p>
+                    </p>
+                    <a href="/dog" class="btn btn-outline-success">View Dogs</a>
+                </div>
+            </div>
+
+            <div class="container-fluid py-5 card">
+                <img src="https://i.pinimg.com/564x/2d/26/b4/2d26b40efcd25cb70675ad95d15d4dd5.jpg" class="card-img-top"
+                    alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Hamsters</h5>
+                    <p class="card-text">
+                    <p style="margin-bottom: 0.1em;">Tiny ball of fur,</p>
+                    <p style="margin-bottom: 0.1em;">RHamster scurries and explores,</p>
+                    <p style="margin-bottom: 0;">Joy in every twitch.</p>
+                    </p>
+                    <a href="/hamster" class="btn btn-outline-success">View Hamsters</a>
+                </div>
+            </div>
+
+            <div class="container-fluid py-5 card">
+                <img src="https://i.pinimg.com/564x/18/18/79/181879ed4c74be4a3f9e0b21e4f49702.jpg" class="card-img-top"
+                    alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Rabbits</h5>
+                    <p class="card-text">
+                    <p style="margin-bottom: 0.1em;">Moonlight gently glows,</p>
+                    <p style="margin-bottom: 0.1em;">Rabbit hops among the stars,</p>
+                    <p style="margin-bottom: 0;">Whispers fill the night.</p>
+                    </p>
+                    <a href="/rabbit" class="btn btn-outline-success">View Rabbits</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- </div>
+    <footer class="py-3 my-4">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="/index" class="nav-link px-2 text-muted">Index</a></li>
+        </ul>
+        <p class="text-center text-muted">© 2023 ELM Foundation, Inc</p>
+    </footer>
+    </div> -->
+</body>
+
+</html>

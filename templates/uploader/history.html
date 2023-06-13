@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.js"
+        integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+
+    <title>Adoption Status Page</title>
+
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #CFECEC;
+        }
+
+        .green-button {
+            background-color: green;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .red-button {
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .column {
+            float: left;
+            width: 25%;
+            padding: 10px;
+        }
+        
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-secondary bg-secondary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Happy Pet </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/mypets">Mypets</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/bukaadopsi">Buka Adopsi</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/status">Status</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/history">History</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <h1>Your History</h1>
+    <div class="row">
+        <div class="column">
+            <img src="https://1.bp.blogspot.com/-B-WDmxNwvIg/W7FCo4-T_RI/AAAAAAAAIzA/0SsWxvHiQBQU23CBqp_VMb0mDuSCLnTjQCLcBGAs/s1600/kitten.jpg" class="img-thumbnail" alt="...">
+        </div>
+        <div class="column">
+            <h2>You've Adopter</h2>
+            <p>Nama : Manis</p>
+            <p>Gender : Jantan</p>
+            <p>Ket : Berbulu putih dan gold</p>
+            <p>Kota : Jakarta</p>
+            <p>CP : 0823573826873</p>
+        </div>
+        <div class="column">
+            <img src="http://4.bp.blogspot.com/-EhOWjb-DdH8/UkOlbpumcoI/AAAAAAAAAcc/X3WwtlXmyTI/s1600/16Gambar+Anjing+Lucu.gunggung.blogspot.jpg" class="img-thumbnail" alt="...">
+        </div>
+        <div class="column">
+            <h2>You've Adopter</h2>
+            <p>Nama : Lola</p>
+            <p>Gender : Betina</p>
+            <p>Ket : Berbulu gold</p>
+            <p>Kota : Bnadung</p>
+            <p>CP : 086382937493</p>
+        </div>
+    </div>
+   
+</body>
+
+</html>
