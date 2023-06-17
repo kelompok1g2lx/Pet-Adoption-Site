@@ -2,100 +2,72 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.4.js"
-        integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
-
-    <title>Adoption Status Page</title>
-
-    <style>
-        h1 {
-            text-align: center;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th,
-        td {
-            border: 1px solid black;
-            padding: 8px;
-        }
-
-        th {
-            background-color: #CFECEC;
-        }
-
-    </style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adoption Status</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+    crossorigin="anonymous"></script>
+  <link href="{{ url_for('static', filename='mystyle.css') }}" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="{{ url_for('static', filename='myjs.js') }}"></script>
 </head>
 
 <body>
-    <div>
-        <nav class="navbar navbar-expand-lg navbar-secondary bg-secondary">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Happy Pet </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/adopsi">Adopsi</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/status">Status</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/history">History</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+  <div id="header">
+    <div class="container">
+      <nav>
+        <img src="static/images/logo.png" class="logo">
+        <ul>
+          <li><a href="/adopsi">ADOPT NOW</a></li>
+          <li><a href="/status1">ADOPTION STATUS</a></li>
+          <li><a href="/history1">HISTORY</a></li>
+        </ul>
+      </nav>
+      <a class="profile-button" href="/user/{{ user_info.username }}">
+        <span class="material-icons" style="color: rgb(255, 255, 255);"> perm_identity </span></a>
     </div>
+  </div>
 
-    <h1>Status Adopsi</h1>
-    <table>
-        <tr>
-            <th>Uploader</th>
-            <th>Contact Person</th>
-            <th>Nama Hewan</th>
-            <th>Spesies</th>
-            <th>Status</th>
+
+      <h2 class="ttable">STATUS ADOPSI</h2>
+      <table class="table table-hover table-light mb-3 shadow-sm mx-auto mt-5 rounded-0" style="max-width: 70%;">
+        <tr class="table-secondary">
+          <th>Uploader</th>
+          <th>Contact Person</th>
+          <th>Nama Hewan</th>
+          <th>Spesies</th>
+          <th>Status</th>
+          <th>Actions</th>
         </tr>
+        {% for r in request_list %}
         <tr>
-            <td>Mirah</td>
-            <td>08512345167</td>
-            <td>Oyen</td>
-            <td>Kucing</td>
-            <td>Pending</td>
+          <td>{{ r['pemilik']['username'] }}</td>
+          <td>{{ r['pemilik']['profile_kontak'] }}</td>
+          <td>{{ r['pet']['nh']}}</td>
+          <td>{{ r['pet']['spesies']}}</td>
+          <td>{{ r['status'] }}</td>
+          <td>
+            <form action="{{ url_for('cancel_request') }}" method="POST">
+              <input type="hidden" name="request_id" value="{{ r._id }}">
+              <button type="submit" class="btn btn-outline-danger btn-sm">Cancel Request</button>
+            </form>
+          </td>
         </tr>
-        <tr>
-            <td>Tasya</td>
-            <td>081231409980</td>
-            <td>Juan</td>
-            <td>Hamster</td>
-            <td>Approval</td>
-        </tr>
-        <tr>
-            <td>Hairul</td>
-            <td>085990172345</td>
-            <td>Marsha</td>
-            <td>Kelinci</td>
-            <td>Declined</td>
-        </tr>
-    </table>
+        {% endfor %}
+      </table>
+      
+      
+   
+</body>
+
+
+
 </body>
 
 </html>
