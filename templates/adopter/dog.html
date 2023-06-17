@@ -30,13 +30,14 @@
                 </ul>
             </nav>
             <a class="profile-button" href="/user/{{ user_info.username }}">
-                <span class="material-icons">perm_identity</span></a>
+                <span class="material-icons" style="color: rgb(255, 255, 255);"> perm_identity </span></a>    
         </div>
     </div>
 
     <div class="d-flex flex-wrap justify-content-center">
         {% for pet in pets %}
-        <div class="card mb-3 container-fluid py-5 card" style="width: 18rem;">
+        {% if pet.status is false and pet.username != user_info['username'] %}
+        <div id="pet-{{ pet._id }}" class="card mb-3 py-2 px-2" style="width: 18rem;">
             <img src="{{ pet.image }}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">{{ pet.nh }}</h5>
@@ -46,14 +47,15 @@
                 <li class="list-group-item">Gender: {{ pet.gender }}</li>
                 <li class="list-group-item">Age: {{ pet.usia }}</li>
                 <li class="list-group-item">Species: {{ pet.spesies }}</li>
-                <li class="list-group-item">Owner: {{ pet.np }}</li>
+                <li class="list-group-item">Owner: {{ pet.username }}</li>
                 <li class="list-group-item">Contact: {{ pet.kontak }}</li>
                 <li class="list-group-item">City: {{ pet.kota }}</li>
             </ul>
             <div class="card-body">
-                <a href="/adopt/{{ pet.np }}" class="card-link btn btn-outline-success btn-sm fill">Adopt</a>
+                <button onclick="sendAdoptionRequest('{{ pet.id_pemilik }}', '{{ pet._id }}')" class="card-link btn btn-outline-success btn-sm">Adopt</button>
             </div>
         </div>
+        {% endif %}
         {% endfor %}
     </div>
 

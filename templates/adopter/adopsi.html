@@ -13,6 +13,7 @@
     <link href="{{ url_for('static', filename='mystyle.css') }}" rel="stylesheet">
     <script src="{{ url_for('static', filename='myjs.js') }}"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
@@ -27,7 +28,7 @@
                 </ul>
             </nav>
             <a class="profile-button" href="/user/{{ user_info.username }}">
-                <span class="material-icons">perm_identity</span></a>    
+                <span class="material-icons" style="color: rgb(255, 255, 255);"> perm_identity </span></a>    
         </div>
     </div>
 
@@ -40,7 +41,7 @@
                     <h5 class="card-title">Cats & Kittens</h5>
                     <p class="card-text">
                     <p style="margin-bottom: 0.1em;">Whiskers softly touch,</p>
-                    <p style="margin-bottom: 0.1em;">Silent paws dance on moonbeams,</p>
+                    <p style="margin-bottom: 0.1em;">Silent dance on moonbeams,</p>
                     <p style="margin-bottom: 0;">Mysterious grace.</p>
                     </p>
                     <a href="/cat" class="btn btn-outline-success">View Cats</a>
@@ -68,7 +69,7 @@
                     <h5 class="card-title">Hamsters</h5>
                     <p class="card-text">
                     <p style="margin-bottom: 0.1em;">Tiny ball of fur,</p>
-                    <p style="margin-bottom: 0.1em;">RHamster scurries and explores,</p>
+                    <p style="margin-bottom: 0.1em;">Scurries and explores,</p>
                     <p style="margin-bottom: 0;">Joy in every twitch.</p>
                     </p>
                     <a href="/hamster" class="btn btn-outline-success">View Hamsters</a>
@@ -91,16 +92,6 @@
         </div>
     </div>
 
-
-
-    <!-- </div>
-    <footer class="py-3 my-4">
-        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-            <li class="nav-item"><a href="/index" class="nav-link px-2 text-muted">Index</a></li>
-        </ul>
-        <p class="text-center text-muted">© 2023 ELM Foundation, Inc</p>
-    </footer>
-    </div> -->
 </body>
 
 </html>
