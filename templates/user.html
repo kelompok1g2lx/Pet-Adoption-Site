@@ -27,16 +27,18 @@
   <link href="{{ url_for('static', filename='mystyle.css') }}" rel="stylesheet">
 </head>
 
-  <!-- JS -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
-  <script src="{{ url_for('static', filename='myjs.js') }}"></script>
-
+<!-- JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+<script src="{{ url_for('static', filename='myjs.js') }}"></script>
+<style>
+ 
+</style>
 </head>
 
 <body>
 
-  <section class="hero is-white">
+  <section class="hero">
     <div class="hero-body" style="padding-bottom:1rem;margin:auto;min-width: 400px">
       <article class="media">
         <figure class="media-left" style="align-self: center">
@@ -46,8 +48,8 @@
         </figure>
         <div class="media-content">
           <div class="content">
-            <p>
-              <strong>{{ user_info.profile_name }}</strong> <small>@{{ user_info.username }}</small>
+            <p style="color: white;">
+              <strong style="color: white;">{{ user_info.profile_name }}</strong> <small>@{{ user_info.username }} | {{ user_info['mode'] }}</small>
               <br>
               {{ user_info.profile_info }}
             </p>
@@ -58,7 +60,7 @@
   </section>
   {% if status %}
   <nav id="btns-me" class="level is-mobile" style="margin-top: 2rem">
-    <a class="button level-item has-text-centered is-sparta" aria-label="edit"
+    <a class="button level-item has-text-centered is-sparta mx-5" aria-label="edit"
       onclick='$("#modal-edit").addClass("is-active")'>
       Edit Profile&nbsp;&nbsp;&nbsp;<span class="icon is-small"><i class="fa fa-pencil" aria-hidden="true"></i></span>
     </a>
@@ -123,20 +125,23 @@
     </div>
     </div>
     </div>
-    <a class="button level-item has-text-centered is-sparta is-outlined" aria-label="logout" href="/mypets">
+    {% if user_info['mode'] == 'adopter' %}
+    <a class="button level-item has-text-centered is-sparta is-outlined mx-5" aria-label="logout" href="/mypets">
       Uploader Mode&nbsp;&nbsp;&nbsp;
     </a>
-    <a class="button level-item has-text-centered is-sparta is-outlined" aria-label="logout" href="/adopsi">
+    {% else %}
+    <a class="button level-item has-text-centered is-sparta is-outlined mx-5" aria-label="logout" href="/adopsi">
       Adopter Mode&nbsp;&nbsp;&nbsp;
     </a>
-    <a class="button level-item has-text-centered is-sparta is-outlined" aria-label="logout" onclick="sign_out()">
+    {% endif %}
+    <a class="button level-item has-text-centered is-sparta is-outlined mx-5" aria-label="logout" onclick="sign_out()">
       Sign Out&nbsp;&nbsp;&nbsp;<span class="icon is-small"><i class="fa fa-sign-out" aria-hidden="true"></i></span>
     </a>
   </nav>
   {% endif %}
 
 
- 
+
 
 </body>
 

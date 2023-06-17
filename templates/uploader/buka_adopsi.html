@@ -27,30 +27,18 @@
                     </ul>
                 </nav>
                 <a class="profile-button" href="/user/{{ user_info.username }}">
-                    <span class="material-icons">perm_identity</span></a>    
+                    <span class="material-icons" style="color: rgb(255, 255, 255);"> perm_identity </span></a>    
             </div>
         </div>
 
 
 <!-- --------- FORM ---------- -->
+
     <div class="container">
         <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+            <h1 class="display-5 fw-bold"  style="color: #6fb7a8;margin-left: 10px;">Open Adoption</h1>
             <div class="container-fluid py-5">
-                <h1 class="display-5 fw-bold">Open Adoption</h1>
                 <form method="POST" action="/buka_adopsi" enctype="multipart/form-data">
-                    <!-- <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="np" name="np" placeholder="Nama Pemilik" required>
-                        <label for="np">Nama Pemilik</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="kontak" name="kontak" placeholder="Contact Person"
-                            required>
-                        <label for="kontak">Contact Person</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="kota" name="kota" placeholder="Asal Kota" required>
-                        <label for="kota">Asal Kota</label>
-                    </div> -->
                     <div class="form-floating mb-3">
                         <select class="form-select" id="spesies" name="spesies" required onchange="redirectToPage(this.value)">
                           <option value="" disabled selected>Pilih Spesies</option>

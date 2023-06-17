@@ -32,35 +32,57 @@
                     </ul>
                 </nav>
                 <a class="profile-button" href="/user/{{ user_info.username }}">
-                    <span class="material-icons">perm_identity</span></a>
+                  <span class="material-icons" style="color: rgb(255, 255, 255);"> perm_identity </span></a>
             </div>
         </div>
 
 
         <div class="d-flex flex-wrap justify-content-center">
             {% for pet in pets %}
-            <div class="card mb-3 container-fluid py-5 card" style="width: 18rem;">
-                <img src="{{ pet.image }}" class="card-img-top" alt="...">
-                <div class="card-body">
+              {% if pet.status is false %}
+                <div class="card mb-3 py-2 px-2" style="width: 18rem;">
+                  <img src="{{ pet.image }}" class="card-img-top" alt="...">
+                  <div class="card-body">
                     <h5 class="card-title">{{ pet.nh }}</h5>
                     <p class="card-text">{{ pet.keterangan }}</p>
-                </div>
-                <ul class="list-group list-group-flush">
+                  </div>
+                  <ul class="list-group list-group-flush">
                     <li class="list-group-item">Gender: {{ pet.gender }}</li>
                     <li class="list-group-item">Age: {{ pet.usia }}</li>
                     <li class="list-group-item">Species: {{ pet.spesies }}</li>
-                    <li class="list-group-item">Owner: {{ pet.id_pemilik }}</li>
+                    <li class="list-group-item">Owner: {{ pet.username }}</li>
                     <li class="list-group-item">Contact: {{ pet.kontak }}</li>
                     <li class="list-group-item">City: {{ pet.kota }}</li>
-                </ul>
-                <div class="card-body">
-                    <a href="/delete/{{ pet.id_pemilik }}" class="card-link btn btn-outline-danger btn-sm">Delete</a>
+                  </ul>
+                  <div class="card-body">
+                    <a href="/delete/{{ pet._id }}" class="card-link btn btn-outline-danger btn-sm">Delete</a>
                     <a href="/edit/{{ pet._id }}" class="card-link btn btn-outline-success btn-sm">Edit</a>
+                  </div>
                 </div>
-            </div>
+              {% else %}
+                <!-- Move the card to history.html -->
+                <div class="card mb-3 container-fluid py-5 card" style="width: 18rem;">
+                  <img src="{{ pet.image }}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ pet.nh }}</h5>
+                    <p class="card-text">{{ pet.keterangan }}</p>
+                  </div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Gender: {{ pet.gender }}</li>
+                    <li class="list-group-item">Age: {{ pet.usia }}</li>
+                    <li class="list-group-item">Species: {{ pet.spesies }}</li>
+                    <li class="list-group-item">Owner: {{ pet.username }}</li>
+                    <li class="list-group-item">Contact: {{ pet.kontak }}</li>
+                    <li class="list-group-item">City: {{ pet.kota }}</li>
+                  </ul>
+                  <div class="card-body">
+                    <p>Adopted</p>
+                  </div>
+                </div>
+              {% endif %}
             {% endfor %}
-        </div>
-
+          </div>
+          
 </body>
 
 </html>

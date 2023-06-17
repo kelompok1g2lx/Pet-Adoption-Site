@@ -11,6 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
     <link href="{{ url_for('static', filename='mystyle.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="{{ url_for('static', filename='myjs.js') }}"></script>
 </head>
 
 <body>
@@ -20,11 +21,11 @@
     <div class="container">
         <div class="p-5 mb-4 bg-body-tertiary rounded-3">
             <div class="container-fluid py-5">
-                <h1 class="display-5 fw-bold">Edit Adoption</h1>
+                <h1 class="display-5 fw-bold" style="color: #6fb7a8;margin-left: 10px;">Edit Adoption</h1>
                 <form action="/update/{{ pet._id }}" method="POST">
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="np" name="np" placeholder="Nama Pemilik"
-                            value="{{ pet.np }}" required>
+                            value="{{ pet.username }}" required>
                         <label for="np">Nama Pemilik</label>
                     </div>
                     <div class="form-floating mb-3">
