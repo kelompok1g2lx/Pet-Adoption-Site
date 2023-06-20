@@ -490,18 +490,19 @@ def decline_request():
 
 # ---------------- HISTORY PAGE -------------------
 
+
 @app.route('/history1')
 def history1():
     token_receive = request.cookies.get("mytoken")
     try:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=["HS256"])
         user_info = db.users.find_one({"username": payload["id"]})
-        adopted_pets = list(db.request_list.find({'requesting_id': user_info['_id'], 'status': {'$not': { '$regex': '/pending/'}}}))
+        adopted_pets = list(db.request_list.find({'requesting_id': user_info['_id'], 'status': {'$ne': 'pending'}}))
         for p in adopted_pets:
             pet = db.pets.find_one({'_id': p['pet_id']})
             pemilik = db.users.find_one({'_id': p['id_pemilik']})
+            p['pemilik'] = pemilik          
             p['pet'] = pet
-            p['pemilik'] = pemilik
 
         adopted_pets = [x for x in adopted_pets if not (x['pet'] == None)]
         return render_template('adopter/history.html', adopted_pets=adopted_pets, user_info=user_info)
@@ -515,7 +516,7 @@ def history2():
     try:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=["HS256"])
         user_info = db.users.find_one({"username": payload["id"]})
-        adopted_pets = list(db.request_list.find({'id_pemilik': user_info['_id'], 'status': {'$not': { '$regex': '/pending/'}}}))
+        adopted_pets = list(db.request_list.find({'id_pemilik': user_info['_id'], 'status': {'$ne': 'pending'}}))
         for a in adopted_pets:
             pet = db.pets.find_one({'_id': a['pet_id']})
             calon = db.users.find_one({'_id': a['requesting_id']})
@@ -526,6 +527,8 @@ def history2():
         return render_template('uploader/history.html', adopted_pets=adopted_pets, user_info=user_info)
     except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
         return redirect(url_for("home"))
+        
+
 
   
 
